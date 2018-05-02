@@ -1,0 +1,65 @@
+.registryBg{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    width: 490px;
+   
+}
+
+.registry-header{
+ padding:20px 0 44px;
+ text-align: center;
+ font-weight: bold;
+ font-size: 20px;
+}
+
+.registry-card {
+    width: 400px;
+    margin:0 auto;
+    z-index: 200;
+    margin-bottom:60px;
+}
+
+.registry-form-input {
+    width: 100%;
+}
+
+
+.sendCode{
+  position: absolute;
+  right: 0;
+  top: 2px;
+  cursor: pointer;
+  color:#666;
+  text-decoration: underline
+}
+button.insureBlueColor{
+    color:rgba(78, 134, 255, 1)
+}
+.mat-card>.mat-card-actions:last-child {
+     margin-bottom: 0px; 
+   
+}
+
+.footCard{
+  position: absolute;
+  bottom:0;
+  left:0;
+  background: rgba(78, 134, 255, 1);
+  height:220px;
+  width:100%;
+  z-index: 100;
+  color:#fff;
+  justify-content: center;
+}
+.footCard p{
+   align-self: flex-end;
+
+   font-size:12px;
+   
+}

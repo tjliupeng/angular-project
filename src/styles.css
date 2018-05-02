@@ -1,0 +1,50 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './assets/css/ag-grid.css';
+@import './assets/css/ag-theme-material.css';
+
+
+body {
+  margin: 0;
+}
+
+
+.baseBlueColor{
+  color:rgba(78, 134, 255, 1)
+}
+.base-blue-color{
+  color:rgba(78, 134, 255, 1)
+}
+.padding20{
+  padding:20px;
+}
+.padding-20{
+  padding: 20px;
+}
+.currentMunuHref{
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #666;
+}
+.insuredButton{
+  background: #4E86ff;
+  color:#fff;
+}
+#mat-nav-control .mat-expansion-panel-body{
+  padding: 0 0 16px;
+}
+#mat-nav-control .mat-nav-list .mat-list-item .mat-list-item-content{
+padding:0 0 0 70px;
+}
+
+#mat-nav-control .mat-icon svg path{
+  fill:#666
+  }
+
+#function_suggest .mat-icon svg path{
+    fill:#2b47e6;
+}
+
+/* .mat-icon{
+  color:#545454;
+} */

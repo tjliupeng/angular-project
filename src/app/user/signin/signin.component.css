@@ -1,0 +1,62 @@
+
+.loginCenter {
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  width: 490px;
+}
+
+
+.login-header {
+  padding:20px 0 44px;
+ justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.login-card{
+  width: 400px;
+  margin:0 auto;
+  z-index: 200;
+  margin-bottom:60px;
+}
+label.mat-input-placeholder.mat-form-field-placeholder{
+  font-size: 16px;
+  color:#545454;
+}
+
+
+input.mat-input-element{
+  height:35px;
+}
+
+.login-form-input {
+    width: 100%;
+}
+
+button.insureBlueColor{
+  color:rgba(78, 134, 255, 1)
+}
+
+.footCard{
+  position: absolute;
+  bottom:0;
+  left:0;
+  background: rgba(78, 134, 255, 1);
+  height:220px;
+  width:100%;
+  z-index: 100;
+  justify-content: center;
+  color:#fff
+}
+.footCard a,.footCard span{
+  align-self: flex-end;
+  line-height: 40px;
+  margin-bottom:10px;
+  font-size:12px;
+}

@@ -1,0 +1,41 @@
+<div fxFlex fxLayout="row" fxLayoutAlign="center ">
+  <table class="mat-form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="mat-form-field">
+          <input #patientNameInput matInput placeholder='病人姓名' [formControl]="patientNameFormControl">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="mat-form-field">
+          <input #tagsInput matInput placeholder='标签' [formControl]="tagsFormControl">
+        </mat-form-field>
+        </td>
+      <td>
+        <mat-form-field class="mat-form-field">
+          <input #hospitalInput matInput placeholder='医院' [formControl]="hospitalFormControl">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <mat-form-field>
+    <button matPrefix mat-icon-button (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button matSuffix mat-icon-button (click)="exit()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div *ngIf="dicomSearchResults" fxFlex class="padding-20" fxLayout="column" fxLayoutAlign="start center">
+  <mat-accordion class="result-list" multi="true">
+    <mat-expansion-panel *ngFor="let dicom of dicomSearchResults">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{dicom.PatientName}}</mat-panel-title>
+        <mat-panel-description>{{dicom.tags}}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <pre>{{dicom | json}}</pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

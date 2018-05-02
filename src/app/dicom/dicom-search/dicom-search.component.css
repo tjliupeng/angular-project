@@ -1,0 +1,36 @@
+.title-hover:hover{
+    color:#fff;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #4E86ff;
+    color:#fff;
+}
+
+
+.avatar {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-input-underline {
+    background-color: white;
+}
+
+.mat-icon {
+    color: white;
+}
+
+.result-list {
+    width: 70%;
+}
