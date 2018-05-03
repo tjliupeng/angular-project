@@ -12,13 +12,13 @@ program
     .option('-t, --test', 'test mode')
     .option('-p, --prod', 'product mode')
     .parse(process.argv);
-let environment = require('./src/environments/environment');
+let environment = require('./server/environments/environment');
 if (program.dev) {
-    environment = require('./src/environments/environment');
+    environment = require('./server/environments/environment');
 }else if (program.test) {
-    environment = require('./src/environments/environment.test');
+    environment = require('./server/environments/environment.test');
 }else if (program.prod) {
-    environment = require('./src/environments/environment.prod');
+    environment = require('./server/environments/environment.prod');
 }
 
 const app = express();
@@ -65,7 +65,7 @@ app.use('/proxy/*', proxy(serverIpPort, {
 
 // get port from environment and store in express
 // const port = process.env.PORT || '3000';
-const port = '3030';
+const port = '3031';
 app.set('port', port);
 
 // parsers for POST data

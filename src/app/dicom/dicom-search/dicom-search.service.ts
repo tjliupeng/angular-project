@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/do';
 
-const backend_server = environment.backend_server;
+// const backend_server = environment.backend_server;
 
 @Injectable()
 export class DicomSearchService {
@@ -52,7 +52,7 @@ export class DicomSearchService {
       data.PatientName = this.patientnamestr.trim();
     }
 
-    return this.http.post<any>(backend_server + '/lists', data)
+    return this.http.post<any>('/lists', data)
       .do(
         res => {
           this.total = +res['total'];
