@@ -28,7 +28,7 @@ const app = express();
 //const upload = require('./server/routes/upload.route');
 
 // point static path to dist
-//app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // proxy angular requests of ./assets static files
 //app.use('/proxy/assets', express.static(path.join(__dirname, 'dist/assets')));
@@ -44,6 +44,7 @@ const app = express();
 //         return require('url').parse(req.originalUrl).path.substring(12);
 //     }
 // }));
+//app.use(express.static(path.join(__dirname, 'src')));
 
 // proxy rest request to backend
 serverIpPort = environment.backend_server+ ':' + environment.backend_server_port;
