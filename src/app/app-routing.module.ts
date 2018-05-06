@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
-import { SigninComponent } from './user/signin/signin.component'
-import { SignupComponent } from './user/signup/signup.component'
-import { UserComponent } from './user/user.component'
+import { RouterModule, Routes } from '@angular/router';
+import { SigninComponent } from './user/signin/signin.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { UserComponent } from './user/user.component';
+import { DicomSearchComponent } from './dicom/dicom-search/dicom-search.component';
 
 const routes: Routes = [
 //  {
@@ -24,7 +25,10 @@ const routes: Routes = [
         path: 'signup', component: SignupComponent
     },
     {
-        path : '', redirectTo:'/login', pathMatch : 'full'
+        path: 'dicoms', component: DicomSearchComponent
+    },
+    {
+        path : '', redirectTo: '/login', pathMatch : 'full'
     }
 ];
 @NgModule({

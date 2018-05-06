@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
       this.isLoginError = false;
       this.userService.isLogin = true;
       localStorage.setItem('userToken', data.access_token);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dicoms']);
     },
     (err: HttpErrorResponse) =>  {
       console.error(err);

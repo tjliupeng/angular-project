@@ -11,10 +11,10 @@ export class DicomSearchService {
   public dicomSearchResults: Array<any>;
   public total = 0;
   public currenttotal = 0;
-  public tagstr: string;
-  public hospitalstr: string;
-  public patientnamestr: string;
-  public scrollid: string;
+  public tagstr = '';
+  public hospitalstr = '';
+  public patientnamestr = '';
+  public scrollid = '';
 
   constructor(private http: HttpClient) { }
 
@@ -52,7 +52,7 @@ export class DicomSearchService {
       data.PatientName = this.patientnamestr.trim();
     }
 
-    return this.http.post<any>('/lists', data)
+    return this.http.post<any>('/dicom/lists', data)
       .do(
         res => {
           this.total = +res['total'];

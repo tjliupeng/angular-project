@@ -20,11 +20,11 @@ export class DicomSearchComponent implements OnInit {
   }
 
   search() {
-    let strval = this.patientNameFormControl.value;
+    let strval = this.patientNameFormControl.value ? this.patientNameFormControl.value.trim() : '';
     this.searchService.patientnamestr = strval;
-    strval = this.tagsFormControl.value;
+    strval = this.tagsFormControl.value ? this.tagsFormControl.value.trim() : '';
     this.searchService.tagstr = strval;
-    strval = this.hospitalFormControl.value;
+    strval = this.hospitalFormControl.value ? this.hospitalFormControl.value.trim() : '';
     this.searchService.hospitalstr = strval;
     this.searchService.Search().subscribe(
       res => console.log(res),
