@@ -1,4 +1,4 @@
-.title-hover:hover{
+/* .title-hover:hover{
     color:#fff;
 }
 
@@ -19,18 +19,38 @@
     border-radius: 100%
 }
 
-.mat-form-field {
-    width: 100%;
-}
-
 .mat-input-underline {
     background-color: white;
 }
 
 .mat-icon {
     color: white;
-}
+} */
 
 .result-list {
     width: 70%;
+}
+
+.currentMunuHref{
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.card-head {
+    width: 100%;
+    min-height: 100px;
+    background: #fff;
+}
+.card-head .mat-form-field{
+    width: 30%;
+    margin-left:3%;
+    margin-top:15px;
+}
+
+.mat-form-field{
+    font-size: 12px;
+ }
+
+.table-container{
+    margin-top: 30px;
 }

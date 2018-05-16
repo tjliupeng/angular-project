@@ -8,7 +8,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class DicomSearchService {
 
-  public dicomSearchResults: Array<any>;
+  public dicomSearchResults: Array<any> = [];
   public total = 0;
   public currenttotal = 0;
   public tagstr = '';
@@ -38,27 +38,30 @@ export class DicomSearchService {
 
     if (this.scrollid.trim()) {
       data.scrollid = this.scrollid.trim();
-    }
+    } else {
+      if (this.tagstr.trim()) {
+        data.tags = this.tagstr.trim();
+      }
 
-    if (this.tagstr.trim()) {
-      data.tags = this.tagstr.trim();
-    }
+      if (this.hospitalstr.trim()) {
+        data.InstitutionName = this.hospitalstr.trim();
+      }
 
-    if (this.hospitalstr.trim()) {
-      data.InstitutionName = this.hospitalstr.trim();
-    }
-
-    if (this.patientnamestr.trim()) {
-      data.PatientName = this.patientnamestr.trim();
+      if (this.patientnamestr.trim()) {
+        data.PatientName = this.patientnamestr.trim();
+      }
     }
 
     return this.http.post<any>('/dicom/lists', data)
       .do(
         res => {
-          this.total = +res['total'];
-          this.currenttotal += +res['current'];
-          this.scrollid = res['scrollid'];
-          res['result'].map(i => this.dicomSearchResults.push(i));
+          const res_json = JSON.parse(res);
+          this.total = +res_json['total'];
+          this.currenttotal += +res_json['current'];
+          this.scrollid = res_json['scrollid'];
+          const result_arr = JSON.parse(res_json['result']);
+          console.log('res result', result_arr);
+          result_arr.map(i => this.dicomSearchResults.push(i._source));
         }
       );
   }
