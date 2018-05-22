@@ -1,5 +1,8 @@
 <div class = "padding-20">
-  <div fxLayout = "row" fxLayoutAlign = "space-evenly center" class="card-head  mat-elevation-z4">
+  <div class= "currentMunuHref">
+    DICOM影像序列搜索
+  </div>
+  <div fxLayout = "column" fxLayoutAlign = "space-evenly center" class="card-head  mat-elevation-z4">
     <div fxFlex ="80" fxLayout = "row" fxLayoutAlign = "start center">
         <mat-form-field>
             <input type="text" #patientNameInput matInput placeholder='病人姓名' [formControl]="patientNameFormControl">
@@ -11,23 +14,36 @@
             <input type="text" #hospitalInput matInput placeholder='医院' [formControl]="hospitalFormControl">
         </mat-form-field>
     </div>
-    <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="20" fxLayout="row" fxLayoutAlign="end">
         <button mat-raised-button (click)=newSearch()>查询</button>
         <button mat-raised-button (click)=resetQuery()>重置</button>
     </div>
   </div>
-  <div *ngIf="this.searchService.dicomSearchResults" class="table-container mat-elevation-z4">
+  <div fxLayout = "column" *ngIf="this.searchService.dicomSearchResults" class="table-container mat-elevation-z4">
     <mat-accordion class="result-list" multi="true">
-      <mat-expansion-panel *ngFor="let dicom of this.searchService.dicomSearchResults">
+      <mat-expansion-panel (opened)="expandDicom(dicom)" *ngFor="let dicom of this.searchService.dicomSearchResults">
         <mat-expansion-panel-header>
           <mat-panel-title>{{dicom.PatientName}}</mat-panel-title>
           <mat-panel-description>{{dicom.tags?dicom.tags:""}}</mat-panel-description>
         </mat-expansion-panel-header>
         <!-- <pre>{{dicom | json}}</pre> -->
         <pre>
-          <p>年龄：{{dicom.PatientAge}}</p>
-          <p>性别：{{dicom.PatientSex}}</p>
-        </pre>
+          年龄：{{dicom.PatientAge}}<br/>
+          性别：{{dicom.PatientSex}}<br/>
+          医院：{{dicom.InstitutionName}}<br/>
+          日期：{{dicom.SeriesDate}}<br/>
+          扫描类别：{{dicom.RequestedProcedureDescription}}
+          <!-- {{dicom.PatientSex}} <button mat-button (click)=newSearch()>修改</button></p> -->
+            <mat-form-field class="dicomtags">
+              <mat-chip-list #dicomTags>
+                  <mat-chip *ngFor="let tag of (dicom.tags?dicom.tags.trim().split(',') : [])" [selectable]="true" [removable]="true" (removed)='remove(tag,dicom)'>{{tag}}
+                      <mat-icon matChipRemove> cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="标签" [matChipInputFor]="dicomTags" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+                      (matChipInputTokenEnd)="addTag($event, dicom)" />
+              </mat-chip-list>
+            </mat-form-field>
+          </pre>>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

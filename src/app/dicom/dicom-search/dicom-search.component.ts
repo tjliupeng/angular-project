@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { DicomSearchService } from './dicom-search.service';
 import { FormControl } from '@angular/forms';
+import {MatChipInputEvent} from '@angular/material';
+import {ENTER, COMMA} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-dicom-search',
@@ -12,6 +14,9 @@ export class DicomSearchComponent implements OnInit {
   patientNameFormControl = new FormControl();
   tagsFormControl = new FormControl();
   hospitalFormControl = new FormControl();
+ // tags = [];
+
+  separatorKeysCodes = [ENTER, COMMA];
 
   constructor(private searchService: DicomSearchService) { }
 
@@ -34,6 +39,29 @@ export class DicomSearchComponent implements OnInit {
     this.search();
   }
 
+  remove(label: string, dicom) {
+    const tags = dicom.tags.trim().split(',');
+    const index = tags.indexOf(label);
+    if ( index >= 0 ) {
+        tags.splice(index, 1);
+        dicom.tags = tags.join(',');
+    }
+  }
+
+  addTag(event: MatChipInputEvent, dicom): void {
+    const inputLabel = event.input;
+    const valueLabel = event.value;
+    const tags = dicom.tags ? dicom.tags.trim().split(',') : [];
+
+    if ((valueLabel || '').trim()) {
+        tags.push(valueLabel);
+        dicom.tags = tags.join(',');
+    }
+    if (inputLabel) {
+        inputLabel.value = '';
+    }
+  }
+
   search() {
     this.searchService.Search().subscribe(
       res => console.log(res),
@@ -47,6 +75,13 @@ export class DicomSearchComponent implements OnInit {
     this.hospitalFormControl.setValue('');
     this.searchService.scrollid = '';
     this.searchService.dicomSearchResults = [];
+  }
+
+  expandDicom(dicom) {
+    // console.log(dicom);
+    // if (dicom.hasOwnProperty('tags') && dicom.tags.trim()) {
+    //   this.tags = dicom.tags.trim().split(' ');
+    // }
   }
 
   @HostListener('window:scroll', ['$event'])

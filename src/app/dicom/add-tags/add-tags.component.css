@@ -1,0 +1,47 @@
+.dialog-head{
+    height:55px;
+    color:#fff;
+  
+  }
+  .dialog-head h4{
+  
+    font-size:16px;
+    border-bottom:2px solid #e8e8e8;
+    color:#333;
+    padding-bottom:20px;
+  }
+  .addDicomTags {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .addDicomTags > * {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 15px;
+    width: 100%;
+    margin-top: 50px;
+  }
+  .dialog-end{
+    
+      border-top: 1px solid #e8e8e8;
+      height: 60px;
+     
+    }
+    .mat-dialog-actions{
+      float: right;
+    }
+    
+    .mat-dialog-actions button{
+     background: #fff;
+     color:#666;
+     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+     margin-right:5px;
+    
+    }
+    .mat-dialog-actions button.insured{
+      background: #4E86ff;
+      color:#fff;
+    }

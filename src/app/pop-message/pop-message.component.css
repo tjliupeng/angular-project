@@ -1,0 +1,33 @@
+
+.modalWhite{
+    margin:-24px;  
+    overflow: hidden; 
+}
+.dialog-head{
+     background: #3f51b5; 
+    height:35px;
+    margin:-24px;  
+}
+.dialog-head h4{
+   line-height: 35px;
+    color:#fff;
+    font-size:12px;
+    margin-top: -10px;
+    padding-left: 20px;
+}
+
+
+.dialogContent {
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    min-width: 250px;
+}
+
+.dialogContent span{
+    font-size: 14px;
+    text-align: center;
+}
+

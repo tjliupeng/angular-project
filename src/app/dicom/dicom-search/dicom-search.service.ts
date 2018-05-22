@@ -61,7 +61,18 @@ export class DicomSearchService {
           this.scrollid = res_json['scrollid'];
           const result_arr = JSON.parse(res_json['result']);
           console.log('res result', result_arr);
-          result_arr.map(i => this.dicomSearchResults.push(i._source));
+          result_arr.map(i => {
+            const newobj: {
+              [k: string]: any
+            } = {};
+            newobj.id = i._id;
+            for (const key in i._source) {
+              if (i._source.hasOwnProperty(key)) {
+                newobj[key] = i._source[key];
+              }
+            }
+            this.dicomSearchResults.push(newobj);
+          });
         }
       );
   }

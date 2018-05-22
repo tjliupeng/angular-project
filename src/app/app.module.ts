@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// For the browser refresh
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -56,6 +58,8 @@ import { DicomSearchComponent } from './dicom/dicom-search/dicom-search.componen
 import { DicomSearchService } from './dicom/dicom-search/dicom-search.service';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 import { UrlInterceptorService } from './interceptor/url-interceptor.service';
+import {PopMessageComponent} from './pop-message/pop-message.component';
+import { AddTagsComponent } from './dicom/add-tags/add-tags.component';
 
 
 @NgModule({
@@ -64,17 +68,21 @@ import { UrlInterceptorService } from './interceptor/url-interceptor.service';
     SigninComponent,
     SignupComponent,
     UserComponent,
-    DicomSearchComponent
+    PopMessageComponent,
+    DicomSearchComponent,
+    AddTagsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
+    MatChipsModule,
     MatListModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -86,6 +94,10 @@ import { UrlInterceptorService } from './interceptor/url-interceptor.service';
   ],
   providers: [
     {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
@@ -96,6 +108,9 @@ import { UrlInterceptorService } from './interceptor/url-interceptor.service';
       multi: true,
     },
     UserService, AppsettingsService, AuthGuard, DicomSearchService],
+    entryComponents: [
+      PopMessageComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+<div class="dialog-head">
+  <h4> DICOM标签</h4>
+</div>
+<div class="dialog-body">
+  <mat-dialog-content>
+      <div class="addDicomTags">
+          <mat-form-field>
+              <input matInput placeholder="DICOM标签" [(ngModel)]="newDicomTags" >
+          </mat-form-field>
+      </div>
+  </mat-dialog-content>
+</div>
+<div class="dialog-end">
+  <mat-dialog-actions>
+          <button mat-button cancel-button mat-dialog-close >取消</button>
+          <button mat-button mat-dialog-close (click)=onNoClick() class="insured">确定</button>
+  </mat-dialog-actions>
+</div>
